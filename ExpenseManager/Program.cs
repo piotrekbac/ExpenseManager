@@ -100,7 +100,20 @@ namespace ExpenseManager
                 }
             }
 
+            // Pobieram kategorię wydatku od użytkownika
+            Console.WriteLine("Podaj kategorię (np. Jedzenie): ");
 
+            // Odczytuję kategorię od użytkownika i przechowuję ją w zmiennej "category"
+            string category = Console.ReadLine();
+
+            // Tworzę nowy obiekt Expense z podanymi danymi
+            var newExpense = new Expense
+            {
+                Date = DateTime.Now,
+                Description = description,
+                Amount = amount,
+                Category = category
+            };
         }
     }
 }
