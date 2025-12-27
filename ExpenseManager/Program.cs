@@ -67,6 +67,39 @@ namespace ExpenseManager
         // Teraz przechodzimy do zdefiniowania funkcji pomocniczych 
         static void AddExpense(ExpenseContext db)
         {
+            // Dodaję nowy wydatek do bazy danych
+            Console.WriteLine("\n =-=-=-=-= DODAWANIE WYDATKU =-=-=-=-=\n");
+            Console.WriteLine("Podaj opis (np. Zakupy): \n");
+
+            // Odczytuję opis wydatku od użytkownika i przechowuję go w zmiennej "description"
+            string description = Console.ReadLine();
+
+            // pobieram kwotę z zabezpieczeniami przed błednym wpisem
+            decimal amount = 0;
+            bool validAmount = false;
+
+            // Pętla do momentu uzyskania prawidłowej kwoty
+            while (!validAmount)
+            {
+                // Proszę użytkownika o podanie kwoty
+                Console.WriteLine("Podaj kwotę (np. 25,30): \n");
+
+                // Odczytuję kwotę od użytkownika jako łańcuch znaków
+                string amountInput = Console.ReadLine();
+
+                // Próbuję przekonwertować łańcuch na liczbę dziesiętną i sprawdzam, czy jest dodatnia
+                if (decimal.TryParse(amountInput, out amount) && amount > 0)
+                {
+                    validAmount = true;
+                }
+
+                // Jeśli konwersja się nie powiodła lub kwota nie jest dodatnia, informuję użytkownika o błędzie
+                else
+                {
+                    Console.WriteLine("Nieprawidłowa kwota. Proszę podać dodatnią liczbę.");
+                }
+            }
+
 
         }
     }
