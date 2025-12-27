@@ -68,8 +68,8 @@ namespace ExpenseManager
         static void AddExpense(ExpenseContext db)
         {
             // Dodaję nowy wydatek do bazy danych
-            Console.WriteLine("\n =-=-=-=-= DODAWANIE WYDATKU =-=-=-=-=\n");
-            Console.WriteLine("Podaj opis (np. Zakupy): \n");
+            Console.WriteLine("\n =-=-=-=-= DODAWANIE WYDATKU =-=-=-=-=");
+            Console.WriteLine("\nPodaj opis (np. Zakupy): \n");
 
             // Odczytuję opis wydatku od użytkownika i przechowuję go w zmiennej "description"
             string description = Console.ReadLine();
@@ -81,8 +81,9 @@ namespace ExpenseManager
             // Pętla do momentu uzyskania prawidłowej kwoty
             while (!validAmount)
             {
+                Console.WriteLine("____________________________");
                 // Proszę użytkownika o podanie kwoty
-                Console.WriteLine("Podaj kwotę (np. 25,30): \n");
+                Console.WriteLine("\nPodaj kwotę (np. 25,30): \n");
 
                 // Odczytuję kwotę od użytkownika jako łańcuch znaków
                 string amountInput = Console.ReadLine();
@@ -96,12 +97,15 @@ namespace ExpenseManager
                 // Jeśli konwersja się nie powiodła lub kwota nie jest dodatnia, informuję użytkownika o błędzie
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Nieprawidłowa kwota. Proszę podać dodatnią liczbę.");
                 }
             }
 
+            Console.WriteLine("____________________________");
+
             // Pobieram kategorię wydatku od użytkownika
-            Console.WriteLine("Podaj kategorię (np. Jedzenie): ");
+            Console.WriteLine("\nPodaj kategorię (np. Jedzenie): \n");
 
             // Odczytuję kategorię od użytkownika i przechowuję ją w zmiennej "category"
             string category = Console.ReadLine();
@@ -114,6 +118,15 @@ namespace ExpenseManager
                 Amount = amount,
                 Category = category
             };
+
+            // Dodaję nowy wydatek do kontekstu bazy danych
+            db.Expenses.Add(newExpense);
+
+            // Zapisuję zmiany w bazie danych
+            db.SaveChanges();
+
+            Console.WriteLine("____________________________");
+            Console.WriteLine("\nSukces! Wydatek został zapisany poprawnie.\n");
         }
     }
 }
