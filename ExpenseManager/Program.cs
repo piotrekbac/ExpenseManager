@@ -33,15 +33,41 @@ namespace ExpenseManager
                     Console.WriteLine("3. Wyjdź z programu");
                     Console.Write("Wybierz opcję: ");
 
+                    // Odczytuję wybór użytkownika i zapisuję go do zmiennej "input"
                     string input = Console.ReadLine();
 
-                    
+                    // Przetwarzam wybór użytkownika za pomocą instrukcji switch
+                    switch (input)
+                    {
+                        // W przypadku wyboru "1", wywołuję funkcję AddExpense
+                        case "1":
+                            AddExpense(db);
+                        break;
+
+                        // W przypadku wyboru "2", wyświetlam wszystkie wydatki z bazy danych
+                        case "2":
+                            Console.WriteLine("");
+                        break;
+
+                        // W przypadku wyboru "3", ustawiam zmienną exit na true, aby zakończyć pętlę i wyjść z programu
+                        case "3": 
+                        exit = true;    
+                        break;
+
+                        // W przypadku nieznanej opcji, informuję użytkownika
+                        default:
+                            Console.WriteLine("Nieznana opcja, spróbuj innych dostępnych opcji.");
+                        break;
+                    }
+
                 }
             }
+        }
 
-                // Czekam na naciśnięcie klawisza przed zamknięciem programu
-                Console.WriteLine("\nNaciśnij dowolny klawisz, aby zamknąć...");
-            Console.ReadKey();
+        // Teraz przechodzimy do zdefiniowania funkcji pomocniczych 
+        static void AddExpense(ExpenseContext db)
+        {
+
         }
     }
 }
