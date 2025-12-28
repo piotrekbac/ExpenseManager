@@ -158,8 +158,8 @@ namespace ExpenseManager
             }
 
             // Wyświetlam nagłówki kolumn dla listy wydatków
-            Console.WriteLine("ID  | Data    | Opis   | Kategoria  | Kwota ");
-            Console.WriteLine("_____________________________________________");
+            Console.WriteLine("ID  |  Data      | Opis            | Kategoria  | Kwota ");
+            Console.WriteLine("-----------------------------------------------------------");
 
             // Iteruję przez każdy wydatek w liście i wyświetlam jego szczegóły
             foreach (var expense in expenses)
@@ -167,7 +167,7 @@ namespace ExpenseManager
                 Console.WriteLine($"{expense.Id, -3} | {expense.Date.ToShortDateString()} | {expense.Description, -15} | {expense.Category, -10} | {expense.Amount} zł");
             }
 
-            Console.WriteLine("_____________________________________________\n");
+            Console.WriteLine("-----------------------------------------------------------\n");
         }
 
         // Definiuję funkcję do usuwania wydatków
