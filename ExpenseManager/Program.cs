@@ -46,7 +46,7 @@ namespace ExpenseManager
 
                         // W przypadku wyboru "2", wyświetlam wszystkie wydatki z bazy danych
                         case "2":
-                            Console.WriteLine("");
+                            ShowExpenses(db);
                         break;
 
                         // W przypadku wyboru "3", ustawiam zmienną exit na true, aby zakończyć pętlę i wyjść z programu
@@ -127,6 +127,35 @@ namespace ExpenseManager
 
             Console.WriteLine("____________________________");
             Console.WriteLine("\nSukces! Wydatek został zapisany poprawnie.\n");
+        }
+
+        // Definiuję funkcję do wyświetlania wszystkich wydatków
+        static void ShowExpenses(ExpenseContext db)
+        {
+            // Wyswietlam wszystkie wydatki z bazy danych
+            Console.WriteLine("\n =-=-=-=-= LISTA WYDATKÓW =-=-=-=-=-=\n");
+
+            // Tworzę listę wszystkich wydatków z bazy danych i przechowuję ją w zmiennej "expenses"
+            var expenses = db.Expenses.ToList();
+
+            // Sprawdzam, czy lista wydatków jest pusta
+            if (expenses.Count == 0)
+            {
+                Console.WriteLine("Brak zapisanych wydatków.\n");
+                return;
+            }
+
+            // Wyświetlam nagłówki kolumn dla listy wydatków
+            Console.WriteLine("ID  | Data    | Opis   | Kategoria  | Kwota ");
+            Console.WriteLine("_____________________________________________");
+
+            // Iteruję przez każdy wydatek w liście i wyświetlam jego szczegóły
+            foreach (var expense in expenses)
+            {
+                Console.WriteLine($"{expense.Id, -3} | {expense.Date.ToShortDateString()} | {expense.Description, -15} | {expense.Category, -10} | {expense.Amount} zł");
+            }
+
+            Console.WriteLine("_____________________________________________");
         }
     }
 }
