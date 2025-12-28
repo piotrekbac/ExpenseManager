@@ -31,7 +31,8 @@ namespace ExpenseManager
                     Console.WriteLine("1. Dodaj nowy wydatek.");
                     Console.WriteLine("2. Wyświetl wszystkie wydatki");
                     Console.WriteLine("3. Usuń wydatek");
-                    Console.WriteLine("4. Wyjdź z programu");
+                    Console.WriteLine("4. Edytuj wydatek");
+                    Console.WriteLine("5. Wyjdź z programu");
                     Console.Write("Wybierz opcję: ");
 
                     // Odczytuję wybór użytkownika i zapisuję go do zmiennej "input"
