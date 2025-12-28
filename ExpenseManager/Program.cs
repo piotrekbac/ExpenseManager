@@ -228,5 +228,70 @@ namespace ExpenseManager
                 Console.WriteLine("Niepoprawne ID. Spróbuj jeszcze raz.\n");
             }
         }
+
+        static void EditExpenses(ExpenseContext db)
+        {
+            Console.WriteLine("\n =-=-=-=-= EDYCJA WYDATKU =-=-=--=-=\n");
+
+            ShowExpenses(db);
+
+            Console.WriteLine("Podaj ID wydatku do edycji: \n");
+
+            if (int.TryParse(Console.ReadLine(), out int id))
+            {
+                var expenseToEdit = db.Expenses.Find(id);
+
+                if (expenseToEdit == null)
+                {
+                    Console.WriteLine("Nie znaleziono wydatku o takim ID. \n");
+                    return;
+                }
+
+                Console.WriteLine("Wpisz nową wartość lub naciśnij ENTER, aby zostawić starą wartość.\n");
+
+                Console.WriteLine($"Nowy opis (obecnie: {expenseToEdit.Description}): \n");
+
+                string newDesc = Console.ReadLine();
+
+                if (!string.IsNullOrWhiteSpace(newDesc))
+                {
+                    expenseToEdit.Description = newDesc;
+                }
+
+                Console.WriteLine($"Nowa kwota (obecnie: {expenseToEdit.Amount}): \n");
+
+                string newAmountStr = Console.ReadLine();
+
+                if (!string.IsNullOrEmpty(newAmountStr))
+                {
+                    if (decimal.TryParse(newAmountStr, out decimal newAmount) && newAmount > 0)
+                    {
+                        expenseToEdit.Amount = newAmount;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nieprawidłowa kwota. Edycja anulowana.\n");
+                    }
+                }
+
+                Console.WriteLine($"Nowa kategoria (obecnie: {expenseToEdit.Category}): \n");
+
+                string newCat = Console.ReadLine();
+
+                if (!string.IsNullOrWhiteSpace(newCat))
+                {
+                    expenseToEdit.Category = newCat;
+                }
+
+                db.SaveChanges();
+
+                Console.WriteLine("Zaktualizowano pomyślnie!\n");
+            }
+
+            else
+            {
+                Console.WriteLine("Niepoprawne ID.");
+            }
+        }
     }
 }
