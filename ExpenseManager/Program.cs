@@ -30,7 +30,8 @@ namespace ExpenseManager
                     Console.WriteLine("=-=-=-=-= MENU PROGRAMU =-=-=-=-= ");
                     Console.WriteLine("1. Dodaj nowy wydatek.");
                     Console.WriteLine("2. Wyświetl wszystkie wydatki");
-                    Console.WriteLine("3. Wyjdź z programu");
+                    Console.WriteLine("3. Usuń wydatek");
+                    Console.WriteLine("4. Wyjdź z programu");
                     Console.Write("Wybierz opcję: ");
 
                     // Odczytuję wybór użytkownika i zapisuję go do zmiennej "input"
@@ -49,8 +50,13 @@ namespace ExpenseManager
                             ShowExpenses(db);
                         break;
 
-                        // W przypadku wyboru "3", ustawiam zmienną exit na true, aby zakończyć pętlę i wyjść z programu
+                        // W przypadku wyboru "3", wywołuję funkcję DeleteExpense - usuwa wydatek z bazy danych
                         case "3": 
+                                DeleteExpenses(db);
+                        break;
+
+                        // W przypadku wyboru "4", ustawiam zmienną exit na true, aby zakończyć pętlę i wyjść z programu
+                        case "4: 
                         exit = true;    
                         break;
 
@@ -155,7 +161,7 @@ namespace ExpenseManager
                 Console.WriteLine($"{expense.Id, -3} | {expense.Date.ToShortDateString()} | {expense.Description, -15} | {expense.Category, -10} | {expense.Amount} zł");
             }
 
-            Console.WriteLine("_____________________________________________");
+            Console.WriteLine("_____________________________________________\n");
         }
     }
 }
