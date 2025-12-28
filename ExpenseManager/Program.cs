@@ -163,5 +163,46 @@ namespace ExpenseManager
 
             Console.WriteLine("_____________________________________________\n");
         }
+
+        static void DeleteExpenses(ExpenseContext db)
+        {
+            ShowExpenses(db);
+
+            Console.WriteLine("Podaj ID wydatku do usunięcia: \n");
+
+            string idString = Console.ReadLine();
+
+            if (int.TryParse(idString, out int id))
+            {
+                var expenseToDelete = db.Expenses.Find(id);
+
+                if (expenseToDelete != null)
+                {
+                    Console.WriteLine($"Czy na pewno chcesz usunąć wydatek: {expenseToDelete.Description} ({expenseToDelete.Amount} zł)? (t/n)\n");
+
+                    string confirm = Console.ReadLine();
+
+                    if (confirm.ToLower() == "t")
+                    {
+                        db.Expenses.Remove(expenseToDelete);
+                        db.SaveChanges();
+
+                        Console.WriteLine("Usunięto pomyślnie.\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Anulowano usunięcie.\n");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Nie znaleziono wydatku o takim ID.\n");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Niepoprawne ID. Spróbuj jeszcze raz.\n");
+            }
+        }
     }
 }
