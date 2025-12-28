@@ -56,7 +56,7 @@ namespace ExpenseManager
                         break;
 
                         // W przypadku wyboru "4", ustawiam zmienną exit na true, aby zakończyć pętlę i wyjść z programu
-                        case "4: 
+                        case "4":
                         exit = true;    
                         break;
 
@@ -164,41 +164,59 @@ namespace ExpenseManager
             Console.WriteLine("_____________________________________________\n");
         }
 
+        // Definiuję funkcję do usuwania wydatków
         static void DeleteExpenses(ExpenseContext db)
         {
+            // Pokazuję listę, żeby użytkownik mógł wybrać ID wydatku do usunięcia
             ShowExpenses(db);
 
+            // Proszę użytkownika o podanie ID wydatku do usunięcia
             Console.WriteLine("Podaj ID wydatku do usunięcia: \n");
 
+            // Odczytuję ID od użytkownika jako łańcuch znaków i przechowuję je w zmiennej "idString"
             string idString = Console.ReadLine();
 
+            // Próbuję przekonwertować łańcuch na liczbę całkowitą
             if (int.TryParse(idString, out int id))
             {
+                // Znajduję wydatek o podanym ID w bazie danych
                 var expenseToDelete = db.Expenses.Find(id);
 
+                // Jeśli wydatek został znaleziony, proszę o potwierdzenie usunięcia
                 if (expenseToDelete != null)
                 {
+                    // Proszę o potwierdzenie usunięcia wydatku
                     Console.WriteLine($"Czy na pewno chcesz usunąć wydatek: {expenseToDelete.Description} ({expenseToDelete.Amount} zł)? (t/n)\n");
 
+                    // Odczytuję odpowiedź użytkownika i przechowuję ją w zmiennej "confirm"
                     string confirm = Console.ReadLine();
 
+                    // Jeśli użytkownik potwierdził usunięcie, usuwam wydatek z bazy danych
                     if (confirm.ToLower() == "t")
                     {
+                        // Usuwam wydatek z kontekstu bazy danych i potem zapisuję zmiany
                         db.Expenses.Remove(expenseToDelete);
                         db.SaveChanges();
 
+                        // Informuję użytkownika o pomyślnym usunięciu
                         Console.WriteLine("Usunięto pomyślnie.\n");
                     }
+
+                    // Jeśli użytkownik anulował usunięcie, informuję go o tym
                     else
                     {
                         Console.WriteLine("Anulowano usunięcie.\n");
                     }
                 }
+
+                // Jeśli wydatek o podanym ID nie został znaleziony, informuję użytkownika
                 else
                 {
                     Console.WriteLine("Nie znaleziono wydatku o takim ID.\n");
                 }
             }
+
+            // Jeśli konwersja ID się nie powiodła, informuję użytkownika o błędzie
             else
             {
                 Console.WriteLine("Niepoprawne ID. Spróbuj jeszcze raz.\n");
