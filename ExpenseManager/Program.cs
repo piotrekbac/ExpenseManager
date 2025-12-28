@@ -56,8 +56,13 @@ namespace ExpenseManager
                                 DeleteExpenses(db);
                         break;
 
-                        // W przypadku wyboru "4", ustawiam zmienną exit na true, aby zakończyć pętlę i wyjść z programu
+                        // W przypadku wyboru "4", wywołuję funkcję EditExpense - edytuje wydatek w bazie danych
                         case "4":
+                            EditExpenses(db);
+                        break;
+
+                        // W przypadku wyboru "4", ustawiam zmienną exit na true, aby zakończyć pętlę i wyjść z programu
+                        case "5":
                         exit = true;    
                         break;
 
