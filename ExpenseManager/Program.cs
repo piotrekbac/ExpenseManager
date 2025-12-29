@@ -355,5 +355,26 @@ namespace ExpenseManager
             Console.WriteLine("\n---------------------------------------\n");
             Console.WriteLine($"Łącznie wydano: {allExpenses.Sum(e => e.Amount)} zł\n\n\n");
         }
+
+        // Definiuję funkcję do eksportu wydatków do pliku CSV 
+        static void ExportToCsv(ExpenseContext db)
+        {
+            Console.WriteLine("\n =-=-=-=-= EKSPORT DO CSV =-=-=-=-=\n");
+
+            // Pobieram wszystkie wydatki z bazy danych i przechowuję je w zmiennej "expenses"
+            var expenses = db.Expenses.ToList();
+
+            // Tworzę StringBuilder do budowania zawartości pliku CSV i przechowuję go w zmiennej "sb"
+            var sb = new System.Text.StringBuilder();
+
+            // Dodaję nagłówki kolumn do pliku CSV
+            sb.AppendLine("Id,Data,Opis,Ilość,Kategoria, Kwota");
+
+            // Iteruję przez każdy wydatek w liście i dodaję jego szczegóły do pliku CSV
+            foreach (var e in expenses)
+            {
+                sb.AppendLine($"{e.Id},{e.Date.ToShortDateString()},{e.Description},{e.Amount},{e.Category}");
+            }
+        }
     }
 }
