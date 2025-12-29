@@ -351,6 +351,9 @@ namespace ExpenseManager
             {
                 Console.WriteLine($"Kategoria: {line.CategoryName}, Suma: {line.TotalAmount}, Ilość: {line.Count}");
             }
+
+            Console.WriteLine("\n---------------------------------------\n");
+            Console.WriteLine($"Łącznie wydano: {db.Expenses.Sum(e => e.Amount)} zł\n");
         }
     }
 }
