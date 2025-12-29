@@ -375,6 +375,27 @@ namespace ExpenseManager
             {
                 sb.AppendLine($"{e.Id},{e.Date.ToShortDateString()},{e.Description},{e.Amount},{e.Category}");
             }
+
+            // Zapisuję zawartość StringBuilder do pliku o nazwie "expenses.csv"
+            string fileName = "wydatki.csv";
+
+            // Próbuję zapisać plik CSV i informuję użytkownika o sukcesie
+            try
+            {
+                // Zapisuję zawartość StringBuilder do pliku CSV z kodowaniem UTF-8
+                System.IO.File.WriteAllText(fileName, sb.ToString(), System.Text.Encoding.UTF8);
+
+                // Wyświetlam komunikat o sukcesie
+                Console.WriteLine($"Sukces! Dane zapisano w pliku: {fileName}");
+                Console.WriteLine($"Ścieżka: {System.IO.Path.GetFullPath(fileName)}");
+            }
+
+            // Łapię wyjątki i informuję użytkownika o błędzie zapisu pliku
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Błąd zapisu pliku: {ex.Message}");
+            }
+
         }
     }
 }
