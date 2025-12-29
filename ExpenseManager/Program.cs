@@ -33,7 +33,8 @@ namespace ExpenseManager
                     Console.WriteLine("3. Usuń wydatek");
                     Console.WriteLine("4. Edytuj wydatek");
                     Console.WriteLine("5. Raport kategorii");
-                    Console.WriteLine("6. Wyjdź z programu");
+                    Console.WriteLine("6. Eksportuj do pliku CSV");
+                    Console.WriteLine("7. Wyjdź z programu");
                     Console.Write("Wybierz opcję: ");
 
                     // Odczytuję wybór użytkownika i zapisuję go do zmiennej "input"
