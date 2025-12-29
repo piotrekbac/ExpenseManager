@@ -353,7 +353,7 @@ namespace ExpenseManager
             }
 
             Console.WriteLine("\n---------------------------------------\n");
-            Console.WriteLine($"Łącznie wydano: {db.Expenses.Sum(e => e.Amount)} zł\n");
+            Console.WriteLine($"Łącznie wydano: {allExpenses.Sum(e => e.Amount)} zł\n\n\n");
         }
     }
 }
