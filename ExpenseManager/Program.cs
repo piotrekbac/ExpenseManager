@@ -330,11 +330,11 @@ namespace ExpenseManager
         {
             Console.WriteLine("\n=-=-=-=-= RAPORT KATEOGRII =-=-=-=-=\n");
 
-            // Pobieram dzisiejszą datę i przechowuję ją w zmiennej "today" 
-            var today = DateTime.Now;
+            // Pobieramy wszystkie wydatki z bazy danych i przechowujemy je w zmiennej "allExpenses"
+            var allExpenses = db.Expenses.ToList();
 
             // Grupuję wydatki według kategorii i obliczam łączną kwotę wydatków dla każdej kategorii w bieżącym miesiącu
-            var raport = db.Expenses 
+            var raport = allExpenses
                 .GroupBy(e => e.Category)
                 .Select(g => new
                 {
@@ -347,9 +347,9 @@ namespace ExpenseManager
                 .ToList();
 
             // Itweruję przez każdą linię raportu i wyświetlam kategorię oraz łączną kwotę wydatków
-            foreach (var line in raport)
+            foreach (var group in raport)
             {
-                Console.WriteLine($"Kategoria: {line.CategoryName}, Suma: {line.TotalAmount}, Ilość: {line.Count}");
+                Console.WriteLine($"Kategoria: {group.CategoryName}, Suma: {group.TotalAmount}, Ilość: {group.Count}");
             }
 
             Console.WriteLine("\n---------------------------------------\n");
