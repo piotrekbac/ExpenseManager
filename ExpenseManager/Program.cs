@@ -332,14 +332,19 @@ namespace ExpenseManager
                 .GroupBy(e => e.Category)
                 .Select(g => new
                 {
-                    // Nazwa kategorii i łączna kwota wydatków w bieżącym miesiącu
-                    Category = g.Key,
-                    TotalAmount = g.Where(e => e.Date.Month == today.Month && e.Date.Year == today.Year).Sum(e => e.Amount)
+                    // Nazwa ketegorii, łączna kwota wydatków i liczba wydatków w tej kategorii
+                    CategoryName = g.Key,
+                    TotalAmount = g.Sum(e => e.Amount),
+                    Count = g.Count()
                 })
                 // Konwertuję wynik na listę
                 .ToList();
 
-
+            // Itweruję przez każdą linię raportu i wyświetlam kategorię oraz łączną kwotę wydatków
+            foreach (var line in raport)
+            {
+                Console.WriteLine($"Kategoria: {line.CategoryName}, Suma: {line.TotalAmount}, Ilość: {line.Count}");
+            }
         }
     }
 }
