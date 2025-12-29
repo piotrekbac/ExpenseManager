@@ -68,8 +68,13 @@ namespace ExpenseManager
                             GetCategoryRaport(db);
                             break;
 
-                        // W przypadku wyboru "4", ustawiam zmienną exit na true, aby zakończyć pętlę i wyjść z programu
+                        // W przypadku wyboru "6", wywołuję funkcję ExportToCsv - eksportuje wydatki do pliku CSV
                         case "6":
+                            ExportToCsv(db);
+                        break;
+
+                        // W przypadku wyboru "4", ustawiam zmienną exit na true, aby zakończyć pętlę i wyjść z programu
+                        case "7":
                         exit = true;    
                         break;
 
