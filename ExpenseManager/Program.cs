@@ -32,7 +32,8 @@ namespace ExpenseManager
                     Console.WriteLine("2. Wyświetl wszystkie wydatki");
                     Console.WriteLine("3. Usuń wydatek");
                     Console.WriteLine("4. Edytuj wydatek");
-                    Console.WriteLine("5. Wyjdź z programu");
+                    Console.WriteLine("5. Raport kategorii");
+                    Console.WriteLine("6. Wyjdź z programu");
                     Console.Write("Wybierz opcję: ");
 
                     // Odczytuję wybór użytkownika i zapisuję go do zmiennej "input"
@@ -61,8 +62,13 @@ namespace ExpenseManager
                             EditExpenses(db);
                         break;
 
-                        // W przypadku wyboru "4", ustawiam zmienną exit na true, aby zakończyć pętlę i wyjść z programu
+                        // W przypadku wyboru "5", wywołuję funkcję GetCategoryRaport - generuje raport kategorii wydatków
                         case "5":
+                            GetCategoryRaport(db);
+                            break;
+
+                        // W przypadku wyboru "4", ustawiam zmienną exit na true, aby zakończyć pętlę i wyjść z programu
+                        case "6":
                         exit = true;    
                         break;
 
