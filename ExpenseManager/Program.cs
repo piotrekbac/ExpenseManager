@@ -318,5 +318,28 @@ namespace ExpenseManager
                 Console.WriteLine("Niepoprawne ID.");
             }
         }
+
+        // Definiuję funkcję do generowania raportu kategorii wydatków
+        static void GetCategoryRaport(ExpenseContext db)
+        {
+            Console.WriteLine("\n=-=-=-=-= RAPORT KATEOGRII =-=-=-=-=\n");
+
+            // Pobieram dzisiejszą datę i przechowuję ją w zmiennej "today" 
+            var today = DateTime.Now;
+
+            // Grupuję wydatki według kategorii i obliczam łączną kwotę wydatków dla każdej kategorii w bieżącym miesiącu
+            var raport = db.Expenses 
+                .GroupBy(e => e.Category)
+                .Select(g => new
+                {
+                    // Nazwa kategorii i łączna kwota wydatków w bieżącym miesiącu
+                    Category = g.Key,
+                    TotalAmount = g.Where(e => e.Date.Month == today.Month && e.Date.Year == today.Year).Sum(e => e.Amount)
+                })
+                // Konwertuję wynik na listę
+                .ToList();
+
+
+        }
     }
 }
