@@ -98,6 +98,10 @@ namespace ExpenseManager
 
                 }
             }
+
+            // Kończę program z podziękowaniem dla użytkownika i czekam na naciśnięcie klawisza przed zamknięciem konsoli
+            Console.WriteLine("\nŚlicznie dziękuję za skorzystnaie z programu. Do zobaczenia kiedyś!\n");
+            Console.ReadKey();
         }
 
         // Teraz przechodzimy do zdefiniowania funkcji pomocniczych 
