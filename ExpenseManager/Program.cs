@@ -451,5 +451,30 @@ namespace ExpenseManager
             Console.ReadKey();
         }
 
+        // Definiuję funkcję do wyświetlania logo aplikacji w konsoli
+        static void PrintLogo()
+        {
+            // Ustawiam kolor tekstu w konsoli na cyan i wyświetlam logo aplikacji
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            // Wyświetlam logo aplikacji w konsoli
+            Console.WriteLine(@"
+              PPPPP   BBBBB  
+              P    P  B    B 
+              PPPPP   BBBBB  
+              P       B    B 
+              P       BBBBB  
+            ");
+
+            // Resetuję kolor konsoli do domyślnego i wyświetlam powitanie
+            Console.ResetColor();
+
+            // Wyświetlam powitanie użytkownika i instrukcję rozpoczęcia programu
+            Console.WriteLine("Witaj w Menedżerze Wydatków!");
+            Console.WriteLine("Naciśnij ENTER, aby rozpocząć...");
+
+            // Czekam na naciśnięcie klawisza ENTER przez użytkownika
+            Console.ReadLine();
+        }
     }
 }
