@@ -15,6 +15,9 @@ namespace ExpenseManager
             // Ustawiam kodowanie konsoli na UTF-8, aby poprawnie wyświetlać znaki specjalne w języku polskim
             Console.OutputEncoding = Encoding.UTF8;
 
+            // Wyświetlam logo aplikacji - złożone z liter P i B (moje inicjały)
+            PrintLogo();
+
             // Witam się z użytkownikiem 
             Console.WriteLine("Menadżer wydatków v1.0- Start Programu\n");
             Console.WriteLine("Autor - Piotr Bacior\n");
@@ -34,7 +37,9 @@ namespace ExpenseManager
                     // Czyścę konsolę przed wyświetleniem menu, aby było czytelniej i schludniej
                     Console.Clear();
 
-                    Console.WriteLine("=-=-=-=-= MENU PROGRAMU =-=-=-=-= ");
+                    // Wyświetlam nagłówek menu programu
+                    PrintHeader("MENU PROGRAMU");
+
                     Console.WriteLine("1. Dodaj nowy wydatek.");
                     Console.WriteLine("2. Wyświetl wszystkie wydatki");
                     Console.WriteLine("3. Usuń wydatek");
