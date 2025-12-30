@@ -427,5 +427,18 @@ namespace ExpenseManager
             // Wypisuję pustą linię dla lepszej czytelności
             Console.WriteLine();
         }
+
+        // Definiuję funkcję do wyświetlania kolorowych komunikatów w konsoli
+        static void PrintMessage(string message, ConsoleColor color)
+        {
+            // Ustawiam kolor tekstu w konsoli na podany kolor
+            Console.ForegroundColor = color;
+
+            // Wyświetlam podany komunikat w konsoli
+            Console.WriteLine(message);
+
+            // Resetuję kolor konsoli do domyślnego
+            Console.ResetColor();
+        }
     }
 }
