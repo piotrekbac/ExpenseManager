@@ -440,5 +440,15 @@ namespace ExpenseManager
             // Resetuję kolor konsoli do domyślnego
             Console.ResetColor();
         }
+
+        // Definiuję funkcję do oczekiwania na naciśnięcie klawisza przez użytkownika
+        static void WaitForUser()
+        {
+            // Wyświetlam komunikat informujący użytkownika o naciśnięciu klawisza, aby kontynuować
+            Console.WriteLine("\nNaciśnij dowolny klawisz, aby wrócić do menu...");
+
+            // Czekam na naciśnięcie klawisza przez użytkownika
+            Console.ReadKey();
+        }
     }
 }
