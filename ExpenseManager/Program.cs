@@ -31,6 +31,9 @@ namespace ExpenseManager
                 // Główna pętla programu 
                 while (!exit)
                 {
+                    // Czyścę konsolę przed wyświetleniem menu, aby było czytelniej i schludniej
+                    Console.Clear();
+
                     Console.WriteLine("=-=-=-=-= MENU PROGRAMU =-=-=-=-= ");
                     Console.WriteLine("1. Dodaj nowy wydatek.");
                     Console.WriteLine("2. Wyświetl wszystkie wydatki");
@@ -405,7 +408,24 @@ namespace ExpenseManager
             {
                 Console.WriteLine($"Błąd zapisu pliku: {ex.Message}");
             }
+        }
 
+        // Poniżej definiuję dodatkowe funkcje pomocnicze, w celu poprawy UX programu
+
+        // Definiuję funkcję do wyświetlania nagłówków sekcji w konsoli
+        static void PrintHeader(string title)
+        {
+            // Wyświetlam nagłówek sekcji z podanym tytułem w kolorze cyan 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            // Wyświetlam tytuł sekcji otoczony dekoracyjnymi znakami
+            Console.WriteLine($"=-=-=-=-=-=-= {title} =-=-=-=-=-=-=");
+
+            // Resetuję kolor konsoli do domyślnego
+            Console.ResetColor();
+
+            // Wypisuję pustą linię dla lepszej czytelności
+            Console.WriteLine();
         }
     }
 }
