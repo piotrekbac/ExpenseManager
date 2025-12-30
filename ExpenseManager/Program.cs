@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 using System;
 using System.Linq;
+using System.Text;
 
 // Piotr Bacior
 
@@ -11,6 +12,9 @@ namespace ExpenseManager
     {
         static void Main(string[] args)
         {
+            // Ustawiam kodowanie konsoli na UTF-8, aby poprawnie wyświetlać znaki specjalne w języku polskim
+            Console.OutputEncoding = Encoding.UTF8;
+
             // Witam się z użytkownikiem 
             Console.WriteLine("Menadżer wydatków v1.0- Start Programu\n");
             Console.WriteLine("Autor - Piotr Bacior\n");
