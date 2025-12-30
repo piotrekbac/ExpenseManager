@@ -450,5 +450,6 @@ namespace ExpenseManager
             // Czekam na naciśnięcie klawisza przez użytkownika
             Console.ReadKey();
         }
+
     }
 }
