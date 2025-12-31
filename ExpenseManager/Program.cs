@@ -158,7 +158,27 @@ namespace ExpenseManager
 
             Console.WriteLine("____________________________");
 
+            // Definiuję zmienną do przechowywania kategorii wydatku
+            string category;
 
+            // Walidacja kategorii wydatku - nie może być pusta
+            while (true)
+            {
+                // Proszę użytkownika o podanie kategorii wydatku
+                Console.WriteLine("Podaj kategorię (np. Jedzenie): ");
+
+                // Odczytuję kategorię od użytkownika i przechowuję ją w zmiennej "category"
+                category = Console.ReadLine();
+
+                // Sprawdzam, czy kategoria nie jest pusta lub składająca się tylko z białych znaków
+                if (!string.IsNullOrWhiteSpace(category))
+                {
+                    break;
+                }
+
+                // Jeśli kategoria jest pusta, wyświetlam komunikat o błędzie i proszę o ponowne podanie
+                PrintMessage("Kategoria nie może być pusta. Spróbuj ponownie.\n", ConsoleColor.DarkYellow);
+            }
 
             // Tworzę nowy obiekt Expense z podanymi danymi
             var newExpense = new Expense
