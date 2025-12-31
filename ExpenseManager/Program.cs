@@ -107,8 +107,11 @@ namespace ExpenseManager
         // Teraz przechodzimy do zdefiniowania funkcji pomocniczych 
         static void AddExpense(ExpenseContext db)
         {
+            // Czyścę konsolę przed dodaniem nowego wydatku
+            Console.Clear();
+
             // Dodaję nowy wydatek do bazy danych
-            Console.WriteLine("\n =-=-=-=-= DODAWANIE WYDATKU =-=-=-=-=");
+            PrintHeader("DODAWANIE WYDATKU");
             Console.WriteLine("\nPodaj opis (np. Zakupy): \n");
 
             // Odczytuję opis wydatku od użytkownika i przechowuję go w zmiennej "description"
