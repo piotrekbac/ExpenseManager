@@ -112,38 +112,30 @@ namespace ExpenseManager
 
             // Dodaję nowy wydatek do bazy danych
             PrintHeader("DODAWANIE WYDATKU");
-            Console.WriteLine("\nPodaj opis (np. Zakupy): \n");
 
-            // Odczytuję opis wydatku od użytkownika i przechowuję go w zmiennej "description"
-            string description = Console.ReadLine();
+            // Definiuję zmienną do przechowywania kwoty wydatku
+            string description;
 
-            // pobieram kwotę z zabezpieczeniami przed błednym wpisem
-            decimal amount = 0;
-            bool validAmount = false;
-
-            // Pętla do momentu uzyskania prawidłowej kwoty
-            while (!validAmount)
+            // Walidacja kwoty opisu wydatku - nie może być pusty
+            while (true)
             {
-                Console.WriteLine("____________________________");
-                // Proszę użytkownika o podanie kwoty
-                Console.WriteLine("\nPodaj kwotę (np. 25,30): \n");
+                // Proszę użytkownika o podanie opisu wydatku
+                Console.WriteLine("Podaj opis (np. Zakupy): ");
 
-                // Odczytuję kwotę od użytkownika jako łańcuch znaków
-                string amountInput = Console.ReadLine();
+                // Odczytuję opis od użytkownika i przechowuję go w zmiennej "description"
+                description = Console.ReadLine();
 
-                // Próbuję przekonwertować łańcuch na liczbę dziesiętną i sprawdzam, czy jest dodatnia
-                if (decimal.TryParse(amountInput, out amount) && amount > 0)
+                // Sprawdzam, czy opis nie jest pusty lub składający się tylko z białych znaków
+                if (!string.IsNullOrWhiteSpace(description))
                 {
-                    validAmount = true;
+                    break;
                 }
 
-                // Jeśli konwersja się nie powiodła lub kwota nie jest dodatnia, informuję użytkownika o błędzie
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Nieprawidłowa kwota. Proszę podać dodatnią liczbę.");
-                }
+                // Jeśli opis jest pusty, wyświetlam komunikat o błędzie i proszę o ponowne podanie
+                PrintMessage("Opis nie może być pusty. Spróbuj ponownie.\n", ConsoleColor.DarkYellow);
             }
+
+           
 
             Console.WriteLine("____________________________");
 
