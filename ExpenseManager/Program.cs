@@ -250,6 +250,12 @@ namespace ExpenseManager
         // Definiuję funkcję do usuwania wydatków
         static void DeleteExpenses(ExpenseContext db)
         {
+            // Czyścę konsolę przed usunięciem wydatku
+            Console.Clear();
+
+            // Wyświetlam nagłówek sekcji usuwania wydatku
+            PrintHeader("USUWANIE WYDATKU");
+
             // Pokazuję listę, żeby użytkownik mógł wybrać ID wydatku do usunięcia
             ShowExpenses(db);
 
