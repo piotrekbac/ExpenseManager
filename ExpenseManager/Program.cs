@@ -135,15 +135,30 @@ namespace ExpenseManager
                 PrintMessage("Opis nie może być pusty. Spróbuj ponownie.\n", ConsoleColor.DarkYellow);
             }
 
-           
+            Console.WriteLine("____________________________");
+
+            // Definiuję zmienną do przechowywania kategorii wydatku
+            decimal amount = 0;
+
+            // Walidacja kwoty wydatku - nie może być pusta i musi być dodatnia 
+            while (true)
+            {
+                // Proszę użytkownika o podanie kategorii wydatku
+                Console.WriteLine("Podaj kwotę (np. 25,50): ");
+
+                // Próbuję przekonwertować wprowadzony tekst na liczbę dziesiętną i sprawdzam, czy jest dodatnia
+                if (decimal.TryParse(Console.ReadLine(), out amount) && amount > 0)
+                {
+                    break;
+                }
+
+                // Jeśli konwersja się nie powiodła lub kwota nie jest dodatnia, wyświetlam komunikat o błędzie i proszę o ponowne podanie
+                PrintMessage("Nieprawidłowa kwota. Spróbuj ponownie.\n", ConsoleColor.DarkYellow);
+            }
 
             Console.WriteLine("____________________________");
 
-            // Pobieram kategorię wydatku od użytkownika
-            Console.WriteLine("\nPodaj kategorię (np. Jedzenie): \n");
 
-            // Odczytuję kategorię od użytkownika i przechowuję ją w zmiennej "category"
-            string category = Console.ReadLine();
 
             // Tworzę nowy obiekt Expense z podanymi danymi
             var newExpense = new Expense
