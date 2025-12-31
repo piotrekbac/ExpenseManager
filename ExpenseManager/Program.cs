@@ -206,8 +206,11 @@ namespace ExpenseManager
         // Definiuję funkcję do wyświetlania wszystkich wydatków
         static void ShowExpenses(ExpenseContext db)
         {
-            // Wyswietlam wszystkie wydatki z bazy danych
-            Console.WriteLine("\n =-=-=-=-= LISTA WYDATKÓW =-=-=-=-=-=\n");
+            // Czyscę konsolę przed wyświetleniem listy wydatków
+            Console.Clear();
+
+            // Wyświetlam nagłówek sekcji listy wydatków
+            PrintHeader("LISTA WYDATKÓW");
 
             // Tworzę listę wszystkich wydatków z bazy danych i przechowuję ją w zmiennej "expenses"
             var expenses = db.Expenses.ToList();
