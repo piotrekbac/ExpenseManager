@@ -218,7 +218,13 @@ namespace ExpenseManager
             // Sprawdzam, czy lista wydatków jest pusta
             if (expenses.Count == 0)
             {
-                Console.WriteLine("Brak zapisanych wydatków.\n");
+                // Jeśli lista jest pusta, wyświetlam komunikat informujący o braku wydatków
+                PrintMessage("Brak wydatków do wyświetlenia.\n", ConsoleColor.DarkYellow);
+
+                // Czekam na naciśnięcie klawisza przez użytkownika przed powrotem do menu
+                WaitForUser();
+
+                // Kończę funkcję, ponieważ nie ma wydatków do wyświetlenia
                 return;
             }
 
