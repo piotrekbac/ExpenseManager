@@ -195,8 +195,12 @@ namespace ExpenseManager
             // Zapisuję zmiany w bazie danych
             db.SaveChanges();
 
+            // Informuję użytkownika o pomyślnym dodaniu wydatku
             Console.WriteLine("____________________________");
-            Console.WriteLine("\nSukces! Wydatek został zapisany poprawnie.\n");
+            PrintMessage("Wydatek dodany pomyślnie!\n", ConsoleColor.Green);
+
+            // Czekam na naciśnięcie klawisza przez użytkownika przed powrotem do menu
+            WaitForUser();
         }
 
         // Definiuję funkcję do wyświetlania wszystkich wydatków
