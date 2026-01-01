@@ -277,7 +277,22 @@ namespace ExpenseManager
                 // Definiuję zmienną do przechowywania wydatku do usunięcia o podanym ID z bazy danych i przechowuję tę informację w zmiennej "expenseToDelete"
                 var expenseToDelete = db.Expenses.Find(id);
 
+                // Jeżeli wydatek o podanym ID został znaleziony, proszę użytkownika o potwierdzenie usunięcia
+                if (expenseToDelete != null)
+                {
+                    // Wyświetlam komunikat z prośbą o potwierdzenie usunięcia wydatku
+                    PrintMessage($"Czy usunąć: '{expenseToDelete.Description}' o kwocie {expenseToDelete.Amount} zł? (T/N): ", ConsoleColor.Yellow);
 
+                    // Jeżeli użytkownik potwierdzi usunięcie, usuwam wydatek z bazy danych
+                    if (Console.ReadLine().ToLower() == "t")
+                    {
+                        db.Expenses.Remove(expenseToDelete);        // Usuwam wydatek z kontekstu bazy danych
+                        db.SaveChanges();                           // Zapisuję zmiany w bazie danych
+
+                        // Informuję użytkownika o pomyślnym usunięciu wydatku
+                        PrintMessage("Wydatek usunięty pomyślnie!\n", ConsoleColor.Green);
+                    }
+                }
             }
         }
 
