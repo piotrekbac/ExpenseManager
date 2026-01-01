@@ -326,89 +326,19 @@ namespace ExpenseManager
             // Wyświetlam nagłówek sekcji edytowania wydatku
             PrintHeader("EDYCJA WYDATKU");
 
-            // Pokazuję listę, żeby użytkownik mógł wybrać ID wydatku do edycji
-            ShowExpenses(db);
+            // Wpierw pokazujemy listę wydatków, żeby użytkownik mógł wybrać ID wydatku do edytowania
+            var expenses = db.Expenses.ToList();
 
-            // Proszę użytkownika o podanie ID wydatku do edycji
-            Console.WriteLine("Podaj ID wydatku do edycji: \n");
-
-            // Próbuję przekonwertować wprowadzony tekst na liczbę całkowitą
-            if (int.TryParse(Console.ReadLine(), out int id))
+            // Iteruję przez każdy wydatek w liście i wyświetlam jego szczegóły
+            foreach (var expense in expenses)
             {
-                // Dopasowuję wydatek o podanym ID z bazy danych i przechowuję go w zmiennej "expenseToEdit"
-                var expenseToEdit = db.Expenses.Find(id);
-
-                // Jeśli wydatek o podanym ID nie został znaleziony, informuję użytkownika i kończę funkcję
-                if (expenseToEdit == null)
-                {
-                    Console.WriteLine("Nie znaleziono wydatku o takim ID. \n");
-                    return;
-                }
-
-                // Proszę użytkownika o podanie nowych wartości dla opisu, kwoty i kategorii wydatku
-                Console.WriteLine("Wpisz nową wartość lub naciśnij ENTER, aby zostawić starą wartość.\n");
-
-                Console.WriteLine($"Nowy opis (obecnie: {expenseToEdit.Description}): \n");
-
-                // Odczytuję nowy opis od użytkownika i przechowuję go w zmiennej "newDesc"
-                string newDesc = Console.ReadLine();
-
-                // Jeśli użytkownik wpisał nowy opis, aktualizuję właściwość Description wydatku
-                if (!string.IsNullOrWhiteSpace(newDesc))
-                {
-                    // Aktualizuję opis wydatku na nową wartość
-                    expenseToEdit.Description = newDesc;
-                }
-
-                // Proszę użytkownika o podanie nowej kwoty wydatku
-                Console.WriteLine($"Nowa kwota (obecnie: {expenseToEdit.Amount}): \n");
-
-                // Odczytuję nową kwotę od użytkownika jako łańcuch znaków
-                string newAmountStr = Console.ReadLine();
-
-                // Jeśli użytkownik wpisał nową kwotę, próbuję ją przekonwertować na liczbę dziesiętną i aktualizuję właściwość Amount wydatku
-                if (!string.IsNullOrEmpty(newAmountStr))
-                {
-                    // Próbuję przekonwertować łańcuch na liczbę dziesiętną i sprawdzam, czy jest dodatnia
-                    if (decimal.TryParse(newAmountStr, out decimal newAmount) && newAmount > 0)
-                    {
-                        // Aktualizuję kwotę wydatku na nową wartość
-                        expenseToEdit.Amount = newAmount;
-                    }
-
-                    // Jeśli konwersja się nie powiodła lub kwota nie jest dodatnia, informuję użytkownika o błędzie
-                    else
-                    {
-                        // Wyświetlam komunikat o błędzie, jeśli kwota jest nieprawidłowa
-                        Console.WriteLine("Nieprawidłowa kwota. Edycja anulowana.\n");
-                    }
-                }
-
-                // Proszę użytkownika o podanie nowej kategorii wydatku
-                Console.WriteLine($"Nowa kategoria (obecnie: {expenseToEdit.Category}): \n");
-
-                // Odczytuję nową kategorię od użytkownika i przechowuję ją w zmiennej "newCat"
-                string newCat = Console.ReadLine();
-
-                // Jeśli użytkownik wpisał nową kategorię, aktualizuję właściwość Category wydatku
-                if (!string.IsNullOrWhiteSpace(newCat))
-                {
-                    // Aktualizuję kategorię wydatku na nową wartość
-                    expenseToEdit.Category = newCat;
-                }
-
-                // Zapisuję zmiany w bazie danych
-                db.SaveChanges();
-
-                // Informuję użytkownika o pomyślnym zaktualizowaniu wydatku
-                Console.WriteLine("Zaktualizowano pomyślnie!\n");
+                // Wyświetlam ID, opis i kwotę wydatku
+                Console.WriteLine($"ID: {expense.Id} | {expense.Description} | {expense.Amount} zł");
             }
 
-            // Jeśli konwersja ID się nie powiodła, informuję użytkownika o błędzie
-            else
-            {
-                Console.WriteLine("Niepoprawne ID.");
-            }
+            Console.WriteLine("\n-------------------------\n");
+
+            
         }
 
         // Definiuję funkcję do generowania raportu kategorii wydatków
