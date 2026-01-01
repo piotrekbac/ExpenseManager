@@ -312,6 +312,9 @@ namespace ExpenseManager
             {
                 PrintMessage("Niepoprawne ID.\n", ConsoleColor.DarkYellow);
             }
+
+            // Czekam na naciśnięcie klawisza przez użytkownika przed powrotem do menu
+            WaitForUser();
         }
 
         // Definiuję funkcję do edytowania wydatków
