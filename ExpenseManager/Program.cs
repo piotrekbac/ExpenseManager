@@ -266,7 +266,19 @@ namespace ExpenseManager
                 Console.WriteLine($"ID: {e.Id} | {e.Description} | {e.Amount} zł");
             }
 
-            Console.WriteLine("-------------------------");
+            Console.WriteLine("\n-------------------------\n");
+
+            // Proszę użytkownika o podanie ID wydatku do usunięcia
+            Console.WriteLine("Podaj ID wydatku do usunięcia: \n");
+
+            // Próbuję przekonwertować wprowadzony tekst na liczbę całkowitą
+            if (int.TryParse(Console.ReadLine(), out int id))
+            {
+                // Definiuję zmienną do przechowywania wydatku do usunięcia o podanym ID z bazy danych i przechowuję tę informację w zmiennej "expenseToDelete"
+                var expenseToDelete = db.Expenses.Find(id);
+
+
+            }
         }
 
         // Definiuję funkcję do edytowania wydatków
