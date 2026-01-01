@@ -338,7 +338,21 @@ namespace ExpenseManager
 
             Console.WriteLine("\n-------------------------\n");
 
-            
+            // Proszę użytkownika o podanie ID wydatku do edycji
+            Console.WriteLine("Podaj ID wydatku do edycji: ");
+
+            // Próbuję przekonwertować wprowadzony tekst na liczbę całkowitą
+            if (int.TryParse(Console.ReadLine(), out int id))
+            {
+                // Definiuję zmienną do przechowywania wydatku do edycji o podanym ID z bazy danych i przechowuję tę informację w zmiennej "expenseToEdit"
+                var expenseToEdit = db.Expenses.Find(id);
+
+                // Jeżeli wydatek o podanym ID nie został znaleziony, informuję użytkownika o braku takiego wydatku
+                if (expenseToEdit == null)
+                {
+                    PrintMessage("Nie znaleziono wydatku", ConsoleColor.Red);
+                }
+            }
         }
 
         // Definiuję funkcję do generowania raportu kategorii wydatków
