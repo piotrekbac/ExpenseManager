@@ -351,7 +351,11 @@ namespace ExpenseManager
                 if (expenseToEdit == null)
                 {
                     PrintMessage("Nie znaleziono wydatku", ConsoleColor.Red);
+                    WaitForUser();          // Czekam na naciśnięcie klawisza przez użytkownika przed powrotem do menu
+                    return;                 // Kończę funkcję, ponieważ nie ma wydatku do edycji
                 }
+
+                Console.WriteLine("\n --- INSTRUKCJA: Wciśnij ENTER, aby pominąć zmianę ---\n");
             }
         }
 
