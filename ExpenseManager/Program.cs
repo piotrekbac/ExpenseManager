@@ -306,6 +306,12 @@ namespace ExpenseManager
                     PrintMessage("Nie znaleziono wydatku o takim ID.\n", ConsoleColor.DarkYellow);
                 }
             }
+
+            // Jeżeli konwersja ID się nie powiodła, informuję użytkownika o błędzie
+            else
+            {
+                PrintMessage("Niepoprawne ID.\n", ConsoleColor.DarkYellow);
+            }
         }
 
         // Definiuję funkcję do edytowania wydatków
