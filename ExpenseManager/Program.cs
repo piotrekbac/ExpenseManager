@@ -263,7 +263,7 @@ namespace ExpenseManager
             foreach (var expense in expenses)
             {
                 // Wyświetlam ID, opis i kwotę wydatku
-                Console.WriteLine($"ID: {e.Id} | {e.Description} | {e.Amount} zł");
+                Console.WriteLine($"ID: {expense.Id} | {expense.Description} | {expense.Amount} zł");
             }
 
             Console.WriteLine("\n-------------------------\n");
@@ -291,6 +291,10 @@ namespace ExpenseManager
 
                         // Informuję użytkownika o pomyślnym usunięciu wydatku
                         PrintMessage("Wydatek usunięty pomyślnie!\n", ConsoleColor.Green);
+                    }
+                    else
+                    {
+                        PrintMessage("Anulowano operację usunięcia.\n", ConsoleColor.DarkYellow);
                     }
                 }
             }
