@@ -320,7 +320,11 @@ namespace ExpenseManager
         // Definiuję funkcję do edytowania wydatków
         static void EditExpenses(ExpenseContext db)
         {
-            Console.WriteLine("\n =-=-=-=-= EDYCJA WYDATKU =-=-=--=-=\n");
+            // Czyścę konsolę przed edytowaniem wydatku
+            Console.Clear();
+
+            // Wyświetlam nagłówek sekcji edytowania wydatku
+            PrintHeader("EDYCJA WYDATKU");
 
             // Pokazuję listę, żeby użytkownik mógł wybrać ID wydatku do edycji
             ShowExpenses(db);
