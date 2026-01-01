@@ -292,10 +292,18 @@ namespace ExpenseManager
                         // Informuję użytkownika o pomyślnym usunięciu wydatku
                         PrintMessage("Wydatek usunięty pomyślnie!\n", ConsoleColor.Green);
                     }
+
+                    // Jeżeli użytkownik anulował usunięcie, informuję go o anulowaniu operacji
                     else
                     {
                         PrintMessage("Anulowano operację usunięcia.\n", ConsoleColor.DarkYellow);
                     }
+                }
+
+                // Jeżeli wydatek o podanym ID nie został znaleziony, informuję użytkownika o braku takiego wydatku
+                else
+                {
+                    PrintMessage("Nie znaleziono wydatku o takim ID.\n", ConsoleColor.DarkYellow);
                 }
             }
         }
