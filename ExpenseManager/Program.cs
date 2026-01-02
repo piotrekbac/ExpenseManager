@@ -356,6 +356,19 @@ namespace ExpenseManager
                 }
 
                 Console.WriteLine("\n --- INSTRUKCJA: Wciśnij ENTER, aby pominąć zmianę ---\n");
+
+                // Edycja opisu wydatku 
+                Console.WriteLine($"Opis [{expenseToEdit.Amount}]: ");
+
+                // Tworzę zmienną do przechowywania nowego opisu wydatku i odczytuję ją od użytkownika
+                string newDesc = Console.ReadLine();
+
+                // Jeżeli użytkownik podał nowy opis (niepusty), aktualizuję opis wydatku w bazie danych
+                if (!string.IsNullOrWhiteSpace(newDesc))
+                {
+                    expenseToEdit.Description = newDesc;
+                }
+
             }
         }
 
