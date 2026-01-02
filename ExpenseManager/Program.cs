@@ -388,10 +388,30 @@ namespace ExpenseManager
                     // Jeżeli konwersja się nie powiodła lub kwota nie jest dodatnia, informuję użytkownika o błędzie
                     else
                     {
-                        PrintMessage("Nieprawidłowa kwota. Pomijam zmianę kwoty.\n", ConsoleColor.DarkYellow);
+                        PrintMessage("Nieprawidłowa kwota. Pomijam zmianę kwoty.\n", ConsoleColor.Red);   
                     }
                 }
 
+                // Edycja kategorii wydatku
+                Console.WriteLine($"Kategoria [{expenseToEdit.Category}]: ");
+
+                // Tworzę zmienną do przechowywania nowej kategorii wydatku i odczytuję ją od użytkownika
+                string newCat = Console.ReadLine();
+
+                // Jeżeli użytkownik podał nową kategorię (niepustą), aktualizuję kategorię wydatku w bazie danych
+                if (!string.IsNullOrWhiteSpace(newCat))
+                {
+                    expenseToEdit.Category = newCat;
+                }
+
+                db.SaveChanges();   // Zapisuję zmiany w bazie danych
+
+                // Informuję użytkownika o pomyślnym zaktualizowaniu wydatku
+                PrintMessage("Wydatek zaktualizowany pomyślnie!\n", ConsoleColor.Green);
+            }
+
+            else
+            {
 
             }
         }
