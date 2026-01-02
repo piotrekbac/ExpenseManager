@@ -423,7 +423,11 @@ namespace ExpenseManager
         // Definiuję funkcję do generowania raportu kategorii wydatków
         static void GetCategoryRaport(ExpenseContext db)
         {
-            Console.WriteLine("\n=-=-=-=-= RAPORT KATEOGRII =-=-=-=-=\n");
+            // Czyścę konsolę przed wygenerowaniem raportu kategorii wydatków
+            Console.Clear();
+
+            // Wyświetlam nagłówek sekcji raportu kategorii wydatków
+            PrintHeader("RAPORT KATEGORII WYDATKÓW");
 
             // Pobieramy wszystkie wydatki z bazy danych i przechowujemy je w zmiennej "allExpenses"
             var allExpenses = db.Expenses.ToList();
