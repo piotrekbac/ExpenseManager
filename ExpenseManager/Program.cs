@@ -426,9 +426,6 @@ namespace ExpenseManager
             // Czyścę konsolę przed wygenerowaniem raportu kategorii wydatków
             Console.Clear();
 
-            // Wyświetlam nagłówek sekcji raportu kategorii wydatków
-            PrintHeader("RAPORT KATEGORII WYDATKÓW");
-
             // Pobieramy wszystkie wydatki z bazy danych i przechowujemy je w zmiennej "allExpenses"
             var allExpenses = db.Expenses.ToList();
 
@@ -442,6 +439,9 @@ namespace ExpenseManager
                     TotalAmount = g.Sum(e => e.Amount),
                     Count = g.Count()
                 })
+                
+                .OrderByDescending(r => r.TotalAmount)  // Sortuję od najdroższej kategorii do najtańszej
+
                 // Konwertuję wynik na listę
                 .ToList();
 
