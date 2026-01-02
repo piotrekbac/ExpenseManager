@@ -505,6 +505,8 @@ namespace ExpenseManager
             {
                 Console.WriteLine($"Błąd zapisu pliku: {ex.Message}");
             }
+
+            WaitForUser();   // Czekam na naciśnięcie klawisza przez użytkownika przed powrotem do menu
         }
 
         // Poniżej definiuję dodatkowe funkcje pomocnicze, w celu poprawy UX programu
