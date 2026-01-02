@@ -358,7 +358,7 @@ namespace ExpenseManager
                 Console.WriteLine("\n --- INSTRUKCJA: Wciśnij ENTER, aby pominąć zmianę ---\n");
 
                 // Edycja opisu wydatku 
-                Console.WriteLine($"Opis [{expenseToEdit.Amount}]: ");
+                Console.WriteLine($"Opis [{expenseToEdit.Description}]: ");
 
                 // Tworzę zmienną do przechowywania nowego opisu wydatku i odczytuję ją od użytkownika
                 string newDesc = Console.ReadLine();
@@ -368,6 +368,30 @@ namespace ExpenseManager
                 {
                     expenseToEdit.Description = newDesc;
                 }
+
+                // Edycja kwoty wydatku
+                Console.WriteLine($"Kwota [{expenseToEdit.Amount}]: ");
+
+                // Tworzę zmienną do przechowywania nowej kwoty wydatku i odczytuję ją od użytkownika
+                string newAmountStr = Console.ReadLine();
+
+                // Jeżeli użytkownik podał nową kwotę (niepustą), próbuję przekonwertować ją na liczbę dziesiętną i aktualizuję kwotę wydatku w bazie danych
+                if (!string.IsNullOrWhiteSpace(newAmountStr))
+                {
+                    // Próbuję przekonwertować wprowadzony tekst na liczbę dziesiętną i sprawdzam, czy jest dodatnia
+                    if (decimal.TryParse(newAmountStr, out decimal newAmount) && newAmount > 0)
+                    {
+                        // Aktualizuję kwotę wydatku w bazie danych
+                        expenseToEdit.Amount = newAmount;
+                    }
+
+                    // Jeżeli konwersja się nie powiodła lub kwota nie jest dodatnia, informuję użytkownika o błędzie
+                    else
+                    {
+                        PrintMessage("Nieprawidłowa kwota. Pomijam zmianę kwoty.\n", ConsoleColor.DarkYellow);
+                    }
+                }
+
 
             }
         }
