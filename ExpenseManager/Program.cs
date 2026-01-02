@@ -410,10 +410,14 @@ namespace ExpenseManager
                 PrintMessage("Wydatek zaktualizowany pomyślnie!\n", ConsoleColor.Green);
             }
 
+            // Jeżeli konwersja ID się nie powiodła, informuję użytkownika o błędzie
             else
             {
-
+                // Wyświetlam komunikat o niepoprawnym ID
+                PrintMessage("Niepoprawne ID.\n", ConsoleColor.Red);
             }
+
+            WaitForUser();    // Czekam na naciśnięcie klawisza przez użytkownika przed powrotem do menu
         }
 
         // Definiuję funkcję do generowania raportu kategorii wydatków
