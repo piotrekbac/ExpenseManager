@@ -465,7 +465,11 @@ namespace ExpenseManager
         // Definiuję funkcję do eksportu wydatków do pliku CSV 
         static void ExportToCsv(ExpenseContext db)
         {
-            Console.WriteLine("\n =-=-=-=-= EKSPORT DO CSV =-=-=-=-=\n");
+            // Czyścę konsolę przed eksportem danych do pliku CSV
+            Console.Clear();
+
+            // Wyświetlam nagłówek sekcji eksportu danych do pliku CSV
+            PrintHeader("EKSPORT DANYCH DO PLIKU CSV");
 
             // Pobieram wszystkie wydatki z bazy danych i przechowuję je w zmiennej "expenses"
             var expenses = db.Expenses.ToList();
