@@ -563,6 +563,8 @@ namespace ExpenseManager
               PPPPP   BBBBB  
               P       B    B 
               P       BBBBB  
+
+            v1.0 - Menedżer Wydatków
             ");
 
             // Resetuję kolor konsoli do domyślnego i wyświetlam powitanie
