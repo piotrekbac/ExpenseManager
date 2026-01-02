@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Text;
 
-// Piotr Bacior
+// Piotr Bacior - Menadżer Wydatków - Aplikacja konsolowa do zarządzania wydatkami osobistymi
 
 namespace ExpenseManager
 {
@@ -564,7 +564,7 @@ namespace ExpenseManager
               P       B    B 
               P       BBBBB  
 
-            v1.0 - Menedżer Wydatków
+        v1.0 - Menedżer Wydatków
             ");
 
             // Resetuję kolor konsoli do domyślnego i wyświetlam powitanie
