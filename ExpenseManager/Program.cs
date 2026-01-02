@@ -445,14 +445,21 @@ namespace ExpenseManager
                 // Konwertuję wynik na listę
                 .ToList();
 
+            // Wyświetlam nagłówek sekcji raportu kategorii wydatków
+            Console.WriteLine("KATEGORIA       | SUMA       | ILOŚĆ");
+            Console.WriteLine("------------------------------------");
+
             // Itweruję przez każdą linię raportu i wyświetlam kategorię oraz łączną kwotę wydatków
-            foreach (var group in raport)
+            foreach (var row in raport)
             {
-                Console.WriteLine($"Kategoria: {group.CategoryName}, Suma: {group.TotalAmount}, Ilość: {group.Count}");
+                Console.WriteLine($"{row.CategoryName,-15} | {row.TotalAmount,8} zł | {row.Count,3} szt.");
             }
 
+            // Wyświetlam podsumowanie łącznej kwoty wszystkich wydatków
             Console.WriteLine("\n---------------------------------------\n");
             Console.WriteLine($"Łącznie wydano: {allExpenses.Sum(e => e.Amount)} zł\n\n\n");
+
+            WaitForUser();   // Czekam na naciśnięcie klawisza przez użytkownika przed powrotem do menu
         }
 
         // Definiuję funkcję do eksportu wydatków do pliku CSV 
